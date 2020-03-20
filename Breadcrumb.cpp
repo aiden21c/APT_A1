@@ -1,4 +1,4 @@
-// MY NAME IS AIDEN
+
 #include "Breadcrumb.h"
 
 Breadcrumb::Breadcrumb(int x, int y, bool stale) {
