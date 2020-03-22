@@ -45,15 +45,36 @@ int main(int argc, char** argv) {
 }
 
 void readMazeStdin(Maze maze) {
-    // ASSUME THE MAZE IS A FIXED SIZE (20X20).
+    std::string str[MAZE_DIM] = {};
 
-    // TODO
+    for (int i = 0; i < MAZE_DIM; i++) {
+        getline(std::cin, str[i]);
+    }
+
+    for (int i = 0; i < MAZE_DIM; i++) {
+        for (int j = 0; j < MAZE_DIM; j++) {
+            maze[i][j] = str[i][j];
+        }
+    }
 }
 
 
 void printMazeStdout(Maze maze, Trail* solution) {
-    // TODO
-    std::cout << "TODO" << std::endl;
+    for (int i = 0; i < MAZE_DIM; i++) {
+        for (int j = 0; j < MAZE_DIM; j++) {
+            if (solution->contains(i, j) & maze[i][j] == '.') {
+                maze[i][j] = ROUTE;
+            }
+        }
+
+    }
+
+    for(int i = 0; i < MAZE_DIM; i++) {
+        for(int j = 0; j < MAZE_DIM; j++) {
+                std::cout << maze[i][j];
+        }
+        std::cout << std::endl;
+    }
 }
 
 void testBreadcrumb() {

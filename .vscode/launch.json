@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "run-helloworld",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "build-helloworld",
+            "program": "${workspaceFolder}/helloworld",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb"
+        }
+    ]
+}
