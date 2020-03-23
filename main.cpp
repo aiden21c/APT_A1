@@ -62,8 +62,8 @@ void readMazeStdin(Maze maze) {
 void printMazeStdout(Maze maze, Trail* solution) {
     for (int i = 0; i < MAZE_DIM; i++) {
         for (int j = 0; j < MAZE_DIM; j++) {
-            if ((solution->contains(i, j) & maze[i][j]) == '.') {
-                maze[i][j] = ROUTE;
+            if ((solution->contains(j, i) && maze[j][i]) == '.') {
+                maze[j][i] = ROUTE;
             }
         }
 
@@ -71,7 +71,7 @@ void printMazeStdout(Maze maze, Trail* solution) {
 
     for(int i = 0; i < MAZE_DIM; i++) {
         for(int j = 0; j < MAZE_DIM; j++) {
-                std::cout << maze[i][j];
+                std::cout << maze[j][i];
         }
         std::cout << std::endl;
     }

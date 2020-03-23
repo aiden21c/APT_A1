@@ -41,6 +41,8 @@ private:
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
+
+   Breadcrumb* getLocation(char x, Maze maze);
 };
 
 #endif // COSC_ASS_ONE_PARTICLE_FILTER

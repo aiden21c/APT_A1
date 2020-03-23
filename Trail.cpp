@@ -29,7 +29,7 @@ bool Trail::contains(int x, int y) {
       x1 = breadcrumbs[i]->getX();
       y1 = breadcrumbs[i]->getY();
 
-      if ((x == x1) & (y == y1)) {
+      if ((x == x1) && (y == y1)) {
          cont = true;
          i = length;
       }
