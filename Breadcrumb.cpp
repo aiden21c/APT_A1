@@ -2,28 +2,25 @@
 #include "Breadcrumb.h"
 
 Breadcrumb::Breadcrumb(int x, int y, bool stale) {
-   // TODO
+   this->x = x;
+   this->y = y;
+   this->stale = stale;
 }
 
-Breadcrumb::~Breadcrumb() {
-   // TODO
-}
+Breadcrumb::~Breadcrumb() { }
 
 int Breadcrumb::getX() {
-   // TODO
-   return 0;
+   return x;
 }
 
 int Breadcrumb::getY() {
-   // TODO
-   return 0;
+   return y;
 }
 
 bool Breadcrumb::isStale() {
-   // TODO
-   return false;
+   return stale;
 }
 
 void Breadcrumb::setStale(bool stale) {
-   // TODO
+   this->stale = stale;
 }

@@ -2,29 +2,42 @@
 #include "Trail.h"
 
 
-Trail::Trail() {
-   // TODO
-}
+Trail::Trail() { }
 
-Trail::~Trail() {
-   // TODO
-}
+Trail::~Trail() { }
 
 int Trail::size() {
-   // TODO
-   return 0;
+   return length;
 }
 
 Breadcrumb* Trail::getPtr(int i) {
-   // TODO
-   return nullptr;
+   Breadcrumb* ptr = breadcrumbs[i];
+   return ptr;
 }
 
 void Trail::addCopy(Breadcrumb* t) {
-   // TODO
+   Breadcrumb** tPtr = &t;
+   Breadcrumb* b = new Breadcrumb(**tPtr);
+   breadcrumbs[length] = b;
+   length++;
 }
 
 bool Trail::contains(int x, int y) {
-   // TODO
-   return false;
+   bool cont = false;
+   int x1, y1;
+   for (int i = 0; i < length; i++) {
+      x1 = breadcrumbs[i]->getX();
+      y1 = breadcrumbs[i]->getY();
+
+      if ((x == x1) & (y == y1)) {
+         cont = true;
+         i = length;
+      }
+   }
+   return cont;
+}
+
+void Trail::removeCrumb(){
+   length--;
+   delete breadcrumbs[length];
 }

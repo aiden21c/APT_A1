@@ -20,11 +20,11 @@ int main(int argc, char** argv) {
     // AS YOU WORK ON MILESTONE 2. YOU CAN UPDATE THEM YOURSELF
     // AS YOU GO ALONG.
     // COMMENT THESE OUT BEFORE YOU SUBMIT!!!
-    std::cout << "TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!" << std::endl;
+    std::cout << std::endl << "TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!" << std::endl;
     testBreadcrumb();
     testTrail();
     std::cout << "DONE TESTING" << std::endl << std::endl;
-
+/*
     // Load Maze from stdin
     Maze maze;
     readMazeStdin(maze);
@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
     printMazeStdout(maze, solution);
 
     delete solver;
-
+*/
     return EXIT_SUCCESS;
 }
 
@@ -62,7 +62,7 @@ void readMazeStdin(Maze maze) {
 void printMazeStdout(Maze maze, Trail* solution) {
     for (int i = 0; i < MAZE_DIM; i++) {
         for (int j = 0; j < MAZE_DIM; j++) {
-            if (solution->contains(i, j) & maze[i][j] == '.') {
+            if ((solution->contains(i, j) & maze[i][j]) == '.') {
                 maze[i][j] = ROUTE;
             }
         }
@@ -94,7 +94,7 @@ void testBreadcrumb() {
 }
 
 void testTrail() {
-    std::cout << "TESTING TRAIL" << std::endl;
+    std::cout << std::endl << "TESTING TRAIL" << std::endl;
 
     // Make a simple trail, should be empty size
     Trail* trail = new Trail();
@@ -105,7 +105,7 @@ void testTrail() {
     trail->addCopy(b1);
     std::cout << "Trail size: " << trail->size() << std::endl;
     std::cout << "Contains (0,0): " << trail->contains(0,0) << std::endl;
-    std::cout << "Contains (1,1): " << trail->contains(1,1) << std::endl;
+    std::cout << "Contains (1,1): " << trail->contains(1,1) << std::endl << std::endl;
 
     // Add second breadcrumb
     Breadcrumb* b2 = new Breadcrumb(0, 0, true);
@@ -118,8 +118,16 @@ void testTrail() {
     Breadcrumb* getB = trail->getPtr(1);
     std::cout << getB->getX() << ",";
     std::cout << getB->getY() << ",";
-    std::cout << getB->isStale() << std::endl;
+    std::cout << getB->isStale() << std::endl << std::endl;
 
     // Print out the trail
-    std::cout << "PRINTING OUT A TRAIL IS AN EXERCISE FOR YOU TO DO" << std::endl;
+    std::cout << "Print Trail:" << std::endl;
+    int size = trail->size();
+    for (int i = 0; i < size; i++) {
+        Breadcrumb* getB = trail->getPtr(i);
+        std::cout << getB->getX() << ",";
+        std::cout << getB->getY() << ",";
+        std::cout << getB->isStale() << std::endl;
+    }
+    std::cout << std::endl;
 }

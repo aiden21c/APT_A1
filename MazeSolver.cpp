@@ -16,5 +16,5 @@ void MazeSolver::solve(Maze maze) {
 
 Trail* MazeSolver::getSolution() {
    // TODO
-   return nullptr;
+   return solution;
 }
