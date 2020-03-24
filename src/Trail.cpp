@@ -2,7 +2,9 @@
 #include "Trail.h"
 
 
-Trail::Trail() { }
+Trail::Trail() { 
+   this->length = 0;
+}
 
 Trail::~Trail() { }
 

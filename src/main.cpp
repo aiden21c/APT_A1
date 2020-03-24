@@ -20,11 +20,13 @@ int main(int argc, char** argv) {
     // AS YOU WORK ON MILESTONE 2. YOU CAN UPDATE THEM YOURSELF
     // AS YOU GO ALONG.
     // COMMENT THESE OUT BEFORE YOU SUBMIT!!!
+    /*
     std::cout << std::endl << "TESTING - COMMENT THE OUT TESTING BEFORE YOU SUBMIT!!!" << std::endl;
     testBreadcrumb();
     testTrail();
     std::cout << "DONE TESTING" << std::endl << std::endl;
-/*
+    */
+
     // Load Maze from stdin
     Maze maze;
     readMazeStdin(maze);
@@ -40,7 +42,7 @@ int main(int argc, char** argv) {
     printMazeStdout(maze, solution);
 
     delete solver;
-*/
+
     return EXIT_SUCCESS;
 }
 
@@ -62,8 +64,8 @@ void readMazeStdin(Maze maze) {
 void printMazeStdout(Maze maze, Trail* solution) {
     for (int i = 0; i < MAZE_DIM; i++) {
         for (int j = 0; j < MAZE_DIM; j++) {
-            if ((solution->contains(j, i) && maze[j][i]) == '.') {
-                maze[j][i] = ROUTE;
+            if ((solution->contains(j, i)) && (maze[i][j] == OPEN)) {
+                maze[i][j] = ROUTE;
             }
         }
 
@@ -71,7 +73,7 @@ void printMazeStdout(Maze maze, Trail* solution) {
 
     for(int i = 0; i < MAZE_DIM; i++) {
         for(int j = 0; j < MAZE_DIM; j++) {
-                std::cout << maze[j][i];
+                std::cout << maze[i][j];
         }
         std::cout << std::endl;
     }
