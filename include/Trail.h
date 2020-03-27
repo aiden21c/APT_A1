@@ -37,6 +37,9 @@ public:
    // Remove a breadcrumb from the end of the trail
    void removeCrumb();
 
+   // Get the index number of a breadcrumb
+   int getIndex(int x, int y);
+
 private:
    /*                                           */
    /* DO NOT MOFIFY ANY CODE IN THIS SECTION    */
@@ -53,6 +56,7 @@ private:
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
+
 };
 
 #endif // COSC_ASS_ONE_TRAIL

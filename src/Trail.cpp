@@ -46,6 +46,20 @@ bool Trail::contains(int x, int y) {
    return cont;
 }
 
+int Trail::getIndex(int x, int y) {
+   int x1, y1, j;
+   for (int i = 0; i < length; i++) {
+      x1 = breadcrumbs[i]->getX();
+      y1 = breadcrumbs[i]->getY();
+
+      if ((x1 == x) && (y1 == y)) {
+         j = i;
+         i = length;
+      }
+   }
+   return j;
+}
+
 void Trail::removeCrumb(){
    length--;
    delete breadcrumbs[length];

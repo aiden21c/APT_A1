@@ -25,10 +25,6 @@ void MazeSolver::solve(Maze maze) {
       int south = bY+1;
       int west = bX-1;
 
-      if(solution->size() == 65) {
-         __asm("nop");
-      }
-
       if (isFree(bX, north, maze) && (north >= 0) && (!solution->contains(bX, north))) {
          Breadcrumb* c = new Breadcrumb(bX, north, false);
          solution->addCopy(c);
@@ -54,7 +50,14 @@ void MazeSolver::solve(Maze maze) {
          bY = c->getY();
          delete c;
       } else {
-         //TODO
+         int index = solution->getIndex(bX, bY);
+         Breadcrumb *current = solution->getPtr(index);
+         Breadcrumb *previous = solution->getPtr(index - 1);
+         current->setStale(true);
+         Breadcrumb* c = new Breadcrumb(previous->getX(), previous->getY(), previous->isStale());
+         bX = c->getX();
+         bY = c->getY();
+         delete c;
       }
    }
 }

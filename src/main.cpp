@@ -64,19 +64,21 @@ void readMazeStdin(Maze maze) {
 void printMazeStdout(Maze maze, Trail* solution) {
     for (int i = 0; i < MAZE_DIM; i++) {
         for (int j = 0; j < MAZE_DIM; j++) {
-            if ((solution->contains(j, i)) && (maze[i][j] == OPEN)) {
-                maze[i][j] = ROUTE;
+            if ((solution->contains(j, i))) {
+                int index = solution->getIndex(j, i);
+                if ((maze[i][j] == OPEN) && (!(solution->getPtr(index)->isStale()))) {
+                    maze[i][j] = ROUTE;
+                }
             }
         }
-
     }
 
     for(int i = 0; i < MAZE_DIM; i++) {
         for(int j = 0; j < MAZE_DIM; j++) {
-                std::cout << maze[i][j];
+            std::cout << maze[i][j];
         }
         std::cout << std::endl;
-    }
+    } 
 }
 
 void testBreadcrumb() {
