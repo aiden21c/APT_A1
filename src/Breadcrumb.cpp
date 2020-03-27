@@ -7,6 +7,13 @@ Breadcrumb::Breadcrumb(int x, int y, bool stale) {
    this->stale = stale;
 }
 
+Breadcrumb::Breadcrumb(Breadcrumb& other) :
+   x(other.x),
+   y(other.y),
+   stale(other.stale)
+{ }
+
+
 Breadcrumb::~Breadcrumb() { }
 
 int Breadcrumb::getX() {

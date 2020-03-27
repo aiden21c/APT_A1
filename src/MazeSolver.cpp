@@ -11,7 +11,6 @@ MazeSolver::~MazeSolver() {
 
 void MazeSolver::solve(Maze maze) {
    Breadcrumb* b = getLocation('S', maze);
-   solution->addCopy(b);
    int bX = b->getX();
    int bY = b->getY();
    delete b;
@@ -21,10 +20,10 @@ void MazeSolver::solve(Maze maze) {
    int eY = end->getY();
 
    while (bX != eX || bY != eY) {
-      int north = bY++;
-      int east = bX++;
-      int south = bY--;
-      int west = bX--;
+      int north = bY+1;
+      int east = bX+1;
+      int south = bY-1;
+      int west = bX-1;
 
       if (isFree(bX, north, maze) && (north >= 0)) {
          Breadcrumb* c = new Breadcrumb(bX, north, false);
@@ -57,8 +56,8 @@ void MazeSolver::solve(Maze maze) {
 }
 
 Trail* MazeSolver::getSolution() {
-   // TODO
-   return solution;
+   Trail* solutionCopy = new Trail(*solution);
+   return solutionCopy;
 }
 
 Breadcrumb* MazeSolver::getLocation(char x, Maze maze) {

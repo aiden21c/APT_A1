@@ -6,6 +6,14 @@ Trail::Trail() {
    this->length = 0;
 }
 
+Trail::Trail(Trail& other) :
+length(other.length)
+{
+   for (int i = 0; i < other.length; i++) {
+      breadcrumbs[i] = new Breadcrumb(*other.breadcrumbs[i]);
+   }
+}
+
 Trail::~Trail() { }
 
 int Trail::size() {
@@ -18,8 +26,7 @@ Breadcrumb* Trail::getPtr(int i) {
 }
 
 void Trail::addCopy(Breadcrumb* t) {
-   Breadcrumb** tPtr = &t;
-   Breadcrumb* b = new Breadcrumb(**tPtr);
+   Breadcrumb* b = new Breadcrumb(*t);
    breadcrumbs[length] = b;
    length++;
 }

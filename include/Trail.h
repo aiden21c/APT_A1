@@ -15,6 +15,7 @@ public:
 
    // Constructor/Desctructor.
    Trail();
+   Trail(Trail& other);
    ~Trail();
 
    // Number of elements in the Trail
