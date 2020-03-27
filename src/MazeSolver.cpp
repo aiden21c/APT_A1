@@ -20,30 +20,34 @@ void MazeSolver::solve(Maze maze) {
    int eY = end->getY();
 
    while (bX != eX || bY != eY) {
-      int north = bY+1;
+      int north = bY-1;
       int east = bX+1;
-      int south = bY-1;
+      int south = bY+1;
       int west = bX-1;
 
-      if (isFree(bX, north, maze) && (north >= 0)) {
+      if(solution->size() == 65) {
+         __asm("nop");
+      }
+
+      if (isFree(bX, north, maze) && (north >= 0) && (!solution->contains(bX, north))) {
          Breadcrumb* c = new Breadcrumb(bX, north, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
-      }  else if (isFree(east, bY, maze) && (east >= 0)) {
+      }  else if (isFree(east, bY, maze) && (east >= 0) && (!solution->contains(east, bY))) {
          Breadcrumb* c = new Breadcrumb(east, bY, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
-      } else if (isFree(bX, south, maze) && (south >= 0)) {
+      } else if (isFree(bX, south, maze) && (south >= 0) && (!solution->contains(bX, south))) {
          Breadcrumb* c = new Breadcrumb(bX, south, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
-      } else if (isFree(west, bY, maze) && (west >= 0)) {
+      } else if (isFree(west, bY, maze) && (west >= 0) && (!solution->contains(west, bY))) {
          Breadcrumb* c = new Breadcrumb(west, bY, false);
          solution->addCopy(c);
          bX = c->getX();
