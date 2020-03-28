@@ -28,7 +28,7 @@ void MazeSolver::solve(Maze maze) {
       int south = bY+1;
       int west = bX-1;
 
-      if ((bX == 14) && (bY == 0)) {
+      if ((bX == 0) && (bY == 8)) {
          __asm("nop");
       }
 
@@ -44,7 +44,7 @@ void MazeSolver::solve(Maze maze) {
          directIndex = directIndex + 1;
          directions[directIndex] = "\0";
 
-      }  else if (isFree(east, bY, maze) && (east >= 0) && (!solution->contains(east, bY))) {
+      }  else if (isFree(east, bY, maze) && (east <= 19) && (!solution->contains(east, bY))) {
          Breadcrumb* c = new Breadcrumb(east, bY, false);
          solution->addCopy(c);
          bX = c->getX();
@@ -56,7 +56,7 @@ void MazeSolver::solve(Maze maze) {
          directIndex = directIndex + 1;
          directions[directIndex] = "\0";
 
-      } else if (isFree(bX, south, maze) && (south >= 0) && (!solution->contains(bX, south))) {
+      } else if (isFree(bX, south, maze) && (south <= 19) && (!solution->contains(bX, south))) {
          Breadcrumb* c = new Breadcrumb(bX, south, false);
          solution->addCopy(c);
          bX = c->getX();
