@@ -1,3 +1,6 @@
+/*  
+
+*/
 
 #include <iostream>
 #include <string>
@@ -45,9 +48,7 @@ int main(int argc, char** argv) {
 
     int i = 0;
     while(directions[i] != "\0") {
-    // for (int i = 0; i < solution->size(); i++) {
         std::cout << directions[i] << std::endl;
-    // }
     i++;
     }
 
