@@ -18,9 +18,9 @@
 ==*==.==.===========
 ==*=====.===========
 ==*************E====
-
 east
 south
+west
 south
 south
 south
@@ -42,6 +42,7 @@ south
 south
 south
 south
+east
 east
 east
 east

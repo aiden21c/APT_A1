@@ -34,11 +34,9 @@ public:
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 
-   // Remove a breadcrumb from the end of the trail
-   void removeCrumb();
-
    // Get the index number of a breadcrumb
    int getIndex(int x, int y);
+   int lastFresh();
 
 private:
    /*                                           */

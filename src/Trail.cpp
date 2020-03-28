@@ -14,7 +14,11 @@ length(other.length)
    }
 }
 
-Trail::~Trail() { }
+Trail::~Trail() { 
+   for (int i = length; i > 0; i--) {
+      delete breadcrumbs[i - 1];
+   }
+}
 
 int Trail::size() {
    return length;
@@ -60,7 +64,13 @@ int Trail::getIndex(int x, int y) {
    return j;
 }
 
-void Trail::removeCrumb(){
-   length--;
-   delete breadcrumbs[length];
+int Trail::lastFresh() {
+   int fresh = 0;
+   for (int i = length-1; i > -1; i--) {
+      if (!(breadcrumbs[i]->isStale())){
+         fresh = i;
+         i = 0;
+      }
+   }
+   return fresh;
 }

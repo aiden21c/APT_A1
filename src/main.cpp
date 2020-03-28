@@ -43,8 +43,12 @@ int main(int argc, char** argv) {
 
     std::string* directions = solver->getDirections();
 
-    for (int i = 0; i < solution->size(); i++) {
+    int i = 0;
+    while(directions[i] != "\0") {
+    // for (int i = 0; i < solution->size(); i++) {
         std::cout << directions[i] << std::endl;
+    // }
+    i++;
     }
 
     delete solver;

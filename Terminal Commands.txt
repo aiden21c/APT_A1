@@ -1,0 +1,4 @@
+COMPILE COMMAND: make
+
+RUN COMMAND: bin/main <sampleTest/test04.maze >bin/actual.out 
+DIFF COMMAND: diff bin/actual.out sampleTest/test04.out

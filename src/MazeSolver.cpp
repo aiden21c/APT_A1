@@ -28,6 +28,10 @@ void MazeSolver::solve(Maze maze) {
       int south = bY+1;
       int west = bX-1;
 
+      if ((bX == 14) && (bY == 0)) {
+         __asm("nop");
+      }
+
       if (isFree(bX, north, maze) && (north >= 0) && (!solution->contains(bX, north))) {
          Breadcrumb* c = new Breadcrumb(bX, north, false);
          solution->addCopy(c);
@@ -37,6 +41,8 @@ void MazeSolver::solve(Maze maze) {
 
          s = "north";
          directions[directIndex] = s;
+         directIndex = directIndex + 1;
+         directions[directIndex] = "\0";
 
       }  else if (isFree(east, bY, maze) && (east >= 0) && (!solution->contains(east, bY))) {
          Breadcrumb* c = new Breadcrumb(east, bY, false);
@@ -47,6 +53,8 @@ void MazeSolver::solve(Maze maze) {
 
          s = "east";
          directions[directIndex] = s;
+         directIndex = directIndex + 1;
+         directions[directIndex] = "\0";
 
       } else if (isFree(bX, south, maze) && (south >= 0) && (!solution->contains(bX, south))) {
          Breadcrumb* c = new Breadcrumb(bX, south, false);
@@ -57,6 +65,8 @@ void MazeSolver::solve(Maze maze) {
 
          s = "south";
          directions[directIndex] = s;
+         directIndex = directIndex + 1;
+         directions[directIndex] = "\0";
 
       } else if (isFree(west, bY, maze) && (west >= 0) && (!solution->contains(west, bY))) {
          Breadcrumb* c = new Breadcrumb(west, bY, false);
@@ -67,21 +77,24 @@ void MazeSolver::solve(Maze maze) {
 
          s = "west";
          directions[directIndex] = s;
+         directIndex = directIndex + 1;
+         directions[directIndex] = "\0";
 
       } else {
          int index = solution->getIndex(bX, bY);
          Breadcrumb *current = solution->getPtr(index);
-         Breadcrumb *previous = solution->getPtr(index - 1);
          current->setStale(true);
-         Breadcrumb* c = new Breadcrumb(previous->getX(), previous->getY(), previous->isStale());
+         int fresh = solution->lastFresh();
+         Breadcrumb *lastFresh = solution->getPtr(fresh);
+         Breadcrumb* c = new Breadcrumb(lastFresh->getX(), lastFresh->getY(), lastFresh->isStale());
          bX = c->getX();
          bY = c->getY();
          delete c;
 
-         directIndex = directIndex - 2;
+         directIndex = directIndex - 1;
+         directions[directIndex] = "\0";
+
       }
-      directIndex = directIndex + 1;
-      directions[directIndex] = "\0";
    }
 }
 
