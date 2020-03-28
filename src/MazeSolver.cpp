@@ -28,10 +28,6 @@ void MazeSolver::solve(Maze maze) {
       int south = bY+1;
       int west = bX-1;
 
-      if ((bX == 0) && (bY == 8)) {
-         __asm("nop");
-      }
-
       if (isFree(bX, north, maze) && (north >= 0) && (!solution->contains(bX, north))) {
          Breadcrumb* c = new Breadcrumb(bX, north, false);
          solution->addCopy(c);
