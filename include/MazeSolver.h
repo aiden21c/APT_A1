@@ -27,6 +27,7 @@ public:
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
+   std::string* getDirections();
 
 private:
 
@@ -45,7 +46,7 @@ private:
    Breadcrumb* getLocation(char x, Maze maze);
    bool isFree(int x, int y, Maze maze);
    char getCharacterAt(int x, int y, Maze maze);
-
+   std::string directions[TRAIL_ARRAY_MAX_SIZE];
 };
 
 #endif // COSC_ASS_ONE_PARTICLE_FILTER

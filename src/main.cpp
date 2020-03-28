@@ -41,6 +41,12 @@ int main(int argc, char** argv) {
     // Print Maze to stdout
     printMazeStdout(maze, solution);
 
+    std::string* directions = solver->getDirections();
+
+    for (int i = 0; i < solution->size(); i++) {
+        std::cout << directions[i] << std::endl;
+    }
+
     delete solver;
 
     return EXIT_SUCCESS;

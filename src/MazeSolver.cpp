@@ -19,6 +19,9 @@ void MazeSolver::solve(Maze maze) {
    int eX = end->getX();
    int eY = end->getY();
 
+   std::string s;
+   int directIndex = 0;
+
    while (bX != eX || bY != eY) {
       int north = bY-1;
       int east = bX+1;
@@ -31,24 +34,40 @@ void MazeSolver::solve(Maze maze) {
          bX = c->getX();
          bY = c->getY();
          delete c;
+
+         s = "north";
+         directions[directIndex] = s;
+
       }  else if (isFree(east, bY, maze) && (east >= 0) && (!solution->contains(east, bY))) {
          Breadcrumb* c = new Breadcrumb(east, bY, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
+
+         s = "east";
+         directions[directIndex] = s;
+
       } else if (isFree(bX, south, maze) && (south >= 0) && (!solution->contains(bX, south))) {
          Breadcrumb* c = new Breadcrumb(bX, south, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
+
+         s = "south";
+         directions[directIndex] = s;
+
       } else if (isFree(west, bY, maze) && (west >= 0) && (!solution->contains(west, bY))) {
          Breadcrumb* c = new Breadcrumb(west, bY, false);
          solution->addCopy(c);
          bX = c->getX();
          bY = c->getY();
          delete c;
+
+         s = "west";
+         directions[directIndex] = s;
+
       } else {
          int index = solution->getIndex(bX, bY);
          Breadcrumb *current = solution->getPtr(index);
@@ -58,7 +77,11 @@ void MazeSolver::solve(Maze maze) {
          bX = c->getX();
          bY = c->getY();
          delete c;
+
+         directIndex = directIndex - 2;
       }
+      directIndex = directIndex + 1;
+      directions[directIndex] = "\0";
    }
 }
 
@@ -66,6 +89,11 @@ Trail* MazeSolver::getSolution() {
    Trail* solutionCopy = new Trail(*solution);
    return solutionCopy;
 }
+
+std::string* MazeSolver::getDirections() {
+   return directions;
+}
+
 
 Breadcrumb* MazeSolver::getLocation(char x, Maze maze) {
    bool sFound = false;
