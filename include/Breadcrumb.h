@@ -15,7 +15,6 @@ public:
 
    // Constructor/Desctructor
    Breadcrumb(int x, int y, bool stale);
-   Breadcrumb(Breadcrumb& other);
    ~Breadcrumb();
 
    // x-co-ordinate of the particle
@@ -34,6 +33,8 @@ public:
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 
+   // Copy constructor
+   Breadcrumb(Breadcrumb& other);
 
 private:
 

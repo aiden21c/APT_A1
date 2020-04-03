@@ -1,6 +1,50 @@
 /*  
 
+To implement this assignment, I took a method of compartmentalising the assignment by 
+first milestones, and then by classes. In order to do this, I completed the milestones
+in the given order, and implemented the breadcrumb class first, followed by the trail
+class. After using the given tests to ensure these classes were working, I then implemented
+maze solver, and proceeded to implement the main class incorporating the reading in and 
+printing out to/from standard input. I then implemented milestone 3 by slightly adjusting
+the maze solver class, adding a string array to hold the ordered directions, and updating
+this array the same way the trail solution was updated each iteration through the solve
+loop.
+
+Each class was implemented by the simple method of using the algorithm given in the assignment
+sheet, as well as checking the methods already given in the header files, and implementing them
+each one by one. In order to test my program, my sample tests involve a increasingly more difficult
+test on the program, in a step by step manner to ensure the program works for one specific solve 
+method before moving on to the next. It can be seen that test00 simply tests a straight line
+maze/solution, where as test08 tests both back tracking, multidirectional movement, having the 
+maze route pass along the boundaries of the maze, and a start and end point that are not located
+on rows 0 and 19 respectively.
+
+The 2 major issues I encountered in my implementation involved the maze solver class, and the solve
+function. The first one involved testing test08.maze, whereby my solve function was written incorrectly
+and was proceeding to attempt to access boundaries outside the maze. This was simply because I had the 
+"<" and ">" signs switched. The second issue involved milestone 3, whereby my solve function would
+incorrectly remove elements of the directions array even tho these directions were still true in the 
+solution. This was because I did not account for the fact that the "last breadcrumb" in the trail may 
+not necessarily be a "fresh" crumb, such as the case of a 4 way intersection, with north and east being 
+dead ends. To solve this, I implemented a function that searches the array for the last "fresh" breadcrumb,
+so that the solve function can go straight there after backtracking, instead of proceeding to alter the 
+directions array while backtracking an already known "stale" route.
+
+Most of the choices I made throughout my program were rooted in the concept of ensuring code is only written
+once. Hence there are a number of added functions throughout each class which are used to ensure the efficiency
+of the code.
+
+Throughout my classes, it can be seen that code has been used very efficiently with very little occurrence 
+of rewriting the same code twice. In this way, a large portion of the program runs very streamlined and
+adheres to good programming practices. This being said, I could not think of a way to write solve function 
+in maze solver without having to write a function that took in 6 parameters. In order to avoid writing 
+such a function, I simply rewrote the code inside the "if" function for each different direction. Appreciating
+this is not necessarily the best practice, however it was the only way i could think of without writing an equally
+problematic void function that accepts 6 parameters. As this is the only inefficient part of the program, I still
+stand by the statement of my program being to a high quality. 
+
 */
+
 
 #include <iostream>
 #include <string>

@@ -15,7 +15,6 @@ public:
 
    // Constructor/Desctructor.
    Trail();
-   Trail(Trail& other);
    ~Trail();
 
    // Number of elements in the Trail
@@ -34,8 +33,13 @@ public:
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 
+   // Copy constructor
+   Trail(Trail& other);
+
    // Get the index number of a breadcrumb
    int getIndex(int x, int y);
+
+   // Get the index of the last fresh breadcrumb
    int lastFresh();
 
 private:
@@ -49,7 +53,6 @@ private:
 
    // Number of breadcrumbs currently in the trail
    int length;
-
 
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */

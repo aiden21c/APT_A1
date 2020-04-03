@@ -27,6 +27,8 @@ public:
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
+
+   // Returns a string array containing the directions
    std::string* getDirections();
 
 private:
@@ -43,9 +45,16 @@ private:
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 
+   // Returns the location of a specific character in the maze
    Breadcrumb* getLocation(char x, Maze maze);
+
+   // Checks if the location is OPEN
    bool isFree(int x, int y, Maze maze);
+
+   // Returns the character at a location in the maze
    char getCharacterAt(int x, int y, Maze maze);
+
+   // A string array containing the directions from start to end
    std::string directions[TRAIL_ARRAY_MAX_SIZE];
 };
 

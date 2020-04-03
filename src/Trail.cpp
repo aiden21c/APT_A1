@@ -1,6 +1,5 @@
 #include "Trail.h"
 
-
 Trail::Trail() { 
    this->length = 0;
 }
@@ -8,12 +7,14 @@ Trail::Trail() {
 Trail::Trail(Trail& other) :
 length(other.length)
 {
+   // Creates a deep copy of the breadcrumb array
    for (int i = 0; i < other.length; i++) {
       breadcrumbs[i] = new Breadcrumb(*other.breadcrumbs[i]);
    }
 }
 
 Trail::~Trail() { 
+   // Ensures the breadcrumbs on the heap are deleted
    for (int i = length; i > 0; i--) {
       delete breadcrumbs[i - 1];
    }
@@ -37,6 +38,7 @@ void Trail::addCopy(Breadcrumb* t) {
 bool Trail::contains(int x, int y) {
    bool cont = false;
    int x1, y1;
+
    for (int i = 0; i < length; i++) {
       x1 = breadcrumbs[i]->getX();
       y1 = breadcrumbs[i]->getY();
