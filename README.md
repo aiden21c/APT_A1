@@ -1,4 +1,4 @@
-# APT_A1
+# Tremauxs-Algorithm
 
 In this assignment you will implement a version of Trémaux’s algorithm for solving simple mazes.
 
